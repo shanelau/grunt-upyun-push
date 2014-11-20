@@ -1,0 +1,58 @@
+{
+  "name": "grunt-upyun-push",
+  "description": "grunt task for upyun cdn",
+  "version": "0.1.0",
+  "homepage": "https://github.com/bammoo/grunt-upyun-push",
+  "author": {
+    "name": "gock",
+    "email": "07jfxiao@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bammoo/grunt-upyun-push.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bammoo/grunt-upyun-push/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bammoo/grunt-upyun-push/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "readme": "# grunt-upyun-push\n\n> grunt task for upyun cdn\n\n## Getting Started\nThis plugin requires Grunt `~0.4.1`\n\nIf you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:\n\n```shell\nnpm install grunt-upyun-push --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks('grunt-upyun-push');\n```\n\n## The \"upyun\" task\n_Run this task with the `grunt upyun` command._\n\n### Usage Examples\n\n```js\nupyun: {\n    options: {\n        username : 'admin',\n        password : '123456',\n        bucket: 'th-static'\n    },  \n    th_static: {\n        dest :'/webapp',\n        expand:true,\n        cwd:'build/',\n        src :['**'],\n    }\n}\n```\n",
+  "readmeFilename": "README.md",
+  "_id": "grunt-upyun-push@0.1.0",
+  "dist": {
+    "shasum": "d3fad0e68dcc2d3cf61627b5d0dcbdf1be5184a5",
+    "tarball": "http://registry.npmjs.org/grunt-upyun-push/-/grunt-upyun-push-0.1.0.tgz"
+  },
+  "_from": "grunt-upyun-push@",
+  "_npmVersion": "1.2.17",
+  "_npmUser": {
+    "name": "bammoo",
+    "email": "07jfxiao@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "bammoo",
+      "email": "07jfxiao@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "d3fad0e68dcc2d3cf61627b5d0dcbdf1be5184a5",
+  "_resolved": "https://registry.npmjs.org/grunt-upyun-push/-/grunt-upyun-push-0.1.0.tgz"
+}
