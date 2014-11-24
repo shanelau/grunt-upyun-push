@@ -20,28 +20,32 @@ module.exports = function(grunt) {
 
   	var done = this.async();
   	var async = grunt.util.async;
-      var options = this.options();
+    var options = this.options();
     // var upyun = require("./upyun-lib").upyun, client = upyun(options["bucket"], options["username"], options["password"]);
     var path = require('path');
     var all = []
 
-    // var authConfig = require('./' + options.authConfig);
-
     var auth;
     var config;
-    var authConfig = this.data.authConfig;
+    // 密码存到另外的文件中，注意要 ignore 掉
+    var authConfig = '.ftppass';
     if (grunt.file.exists('./' + authConfig)) {
       config = grunt.file.read('./' + authConfig);
       if (config.length) {
         auth = JSON.parse(config);
       }
     }
+
+    if(!auth) {
+      grunt.log.warn('auth file "' + authConfig + '" not found.');
+      return
+    }
     var upy = new UPYun(auth.bucket, auth.username, auth.password);
 
     // console.log('auth: ', auth.bucket, auth.username, auth.password)
     // return;
 
-      // Iterate over all specified file groups.
+    // Iterate over all specified file groups.
   	this.files.forEach(function(f) {
       var paths = f.src.filter(function(filepath) {
         console.log('Pushing ', filepath)
