@@ -1,8 +1,8 @@
 /*
- * grunt-upyun
- * https://github.com/bammoo/grunt-upyun-push
+ * grunt-upyun-push
+ * https://github.com/Black-Mirror/grunt-upyun-push
  *
- * Copyright (c) 2014 07jfxiao@gmail.com
+ * Copyright (c) 2015 xiao-jianfeng@qq.com
  * Licensed under the MIT license.
  */
 
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   var path = require('path');
   var fs = require('fs');
 
-  // 官方 npm upyun 包不方便使用
+  // 官方 npm upyun 包不方便使用, 单独使用他们的 nodejs sdk 包
   var UPYun = require('./upyun-lib').UPYun;
 
   grunt.registerMultiTask('upyun', 'Your task description goes here.', function() {
@@ -44,6 +44,8 @@ module.exports = function(grunt) {
 
     // console.log('auth: ', auth.bucket, auth.username, auth.password)
     // return;
+
+    // console.log(this.files)
 
     // Iterate over all specified file groups.
   	this.files.forEach(function(f) {

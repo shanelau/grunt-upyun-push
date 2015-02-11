@@ -1,23 +1,23 @@
 {
   "name": "grunt-upyun-push",
   "description": "grunt task for upyun cdn",
-  "version": "0.1.0",
-  "homepage": "https://github.com/bammoo/grunt-upyun-push",
+  "version": "0.1.1",
+  "homepage": "https://github.com/Black-Mirror/grunt-upyun-push",
   "author": {
     "name": "gock",
-    "email": "07jfxiao@gmail.com"
+    "email": "xiao-jianfeng@qq.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bammoo/grunt-upyun-push.git"
+    "url": "git://github.com/Black-Mirror/grunt-upyun-push.git"
   },
   "bugs": {
-    "url": "https://github.com/bammoo/grunt-upyun-push/issues"
+    "url": "https://github.com/Black-Mirror/grunt-upyun-push/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/bammoo/grunt-upyun-push/blob/master/LICENSE-MIT"
+      "url": "https://github.com/Black-Mirror/grunt-upyun-push/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -43,13 +43,13 @@
   "_from": "grunt-upyun-push@",
   "_npmVersion": "1.2.17",
   "_npmUser": {
-    "name": "bammoo",
-    "email": "07jfxiao@gmail.com"
+    "name": "Black-Mirror",
+    "email": "xiao-jianfeng@qq.com"
   },
   "maintainers": [
     {
-      "name": "bammoo",
-      "email": "07jfxiao@gmail.com"
+      "name": "Black-Mirror",
+      "email": "xiao-jianfeng@qq.com"
     }
   ],
   "directories": {},

@@ -1,8 +1,8 @@
 /*
- * grunt-upyun
- * https://github.com/gockxml/grunt-upyun
+ * grunt-upyun-push
+ * https://github.com/Black-Mirror/grunt-upyun-push
  *
- * Copyright (c) 2013 gock
+ * Copyright (c) 2015 xiao-jianfeng@qq.com
  * Licensed under the MIT license.
  */
 
@@ -10,24 +10,26 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-
-    // Configuration to be run (and then tested).
-	upyun: {
-
-		options: {
-			username : 'admin',
-			password : '123456',
-			bucket: 'test'
-		},	
-		test: {
-			dest :'/webapp',
-			src :['test/fixtures/*'],
-
-		},
-	}
-
+    upyun: {
+      th_static: {
+        files: [{
+          expand: true,
+          dest :'/build/static/dist/',
+          cwd: './local/wait-to-push/dist/',
+          src: ['**/*.js', '**/*.css'],
+          filter: 'isFile'
+        }]
+      },
+      images: {
+        files: [{
+          expand: true,
+          dest :'/cdn/url/images/',
+          cwd: './local/wait-to-push/images/',
+          src: ['**/*.png', '**/*.jpg', '**/*.gif']
+        }]
+      }
+    }
   });
 
   grunt.loadTasks('tasks');
