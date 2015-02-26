@@ -2,3 +2,5 @@
 .debug.js
 .DS_Store
 node_modules
+.ftppass
+tests/**/*.png

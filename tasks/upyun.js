@@ -14,14 +14,14 @@ module.exports = function(grunt) {
   var fs = require('fs');
 
   // 官方 npm upyun 包不方便使用, 单独使用他们的 nodejs sdk 包
-  var UPYun = require('./upyun-lib').UPYun;
+  var upyun = require("./upyun-lib").UPYun;
 
   grunt.registerMultiTask('upyun', 'Your task description goes here.', function() {
 
   	var done = this.async();
   	var async = grunt.util.async;
     var options = this.options();
-    // var upyun = require("./upyun-lib").upyun, client = upyun(options["bucket"], options["username"], options["password"]);
+
     var path = require('path');
     var all = []
 
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
       grunt.log.warn('auth file "' + authConfig + '" not found.');
       return
     }
-    var upy = new UPYun(auth.bucket, auth.username, auth.password);
+    var upyClient = new upyun(auth.bucket, auth.username, auth.password);
 
     // console.log('auth: ', auth.bucket, auth.username, auth.password)
     // return;
@@ -66,15 +66,19 @@ module.exports = function(grunt) {
 
     async.forEach(all, function(file, cb) {
 
-      var dest = file[0], filepath = file[1];
+      var dest = file[0]
+        , filepath = file[1]
+        ;
+
       // console.log(grunt.file.read(filepath))
       // console.log(cb.toString())
 
-  		upy.writeFile(dest, grunt.file.read(filepath), true, function(err, data){
-  			grunt.log.writeln('Pushed ' + dest, data);
-      //   cb();
-    		// done(!err)
+      fs.readFile(filepath, function(err, data) {
+        upyClient.writeFile(dest, data, true, function(err, data) {
+          grunt.log.writeln('Pushed ' + dest, data);
+        })
       })
+
     })
 
   });

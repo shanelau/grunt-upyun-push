@@ -78,8 +78,8 @@ grunt.initConfig({
     th_static: {
       files: [{
         expand: true,
-        dest :'/build/static/dist/',
-        cwd: './local/wait-to-push/dist/',
+        dest :'/tests/build/static/dist/',
+        cwd: './tests/local/wait-to-push/dist/',
         src: ['**/*.js', '**/*.css'],
         filter: 'isFile'
       }]
@@ -87,8 +87,8 @@ grunt.initConfig({
     images: {
       files: [{
         expand: true,
-        dest :'/cdn/url/images/',
-        cwd: './local/wait-to-push/images/',
+        dest :'/tests/cdn/url/images/',
+        cwd: './tests/local/wait-to-push/images/',
         src: ['**/*.png', '**/*.jpg', '**/*.gif']
       }]
     }
