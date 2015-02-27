@@ -50,7 +50,6 @@ module.exports = function(grunt) {
     // Iterate over all specified file groups.
   	this.files.forEach(function(f) {
       var paths = f.src.filter(function(filepath) {
-        console.log('Pushing ', filepath)
   			// Warn on and remove invalid source files (if nonull was set).
   			if (!grunt.file.exists(filepath)) {
   				grunt.log.warn('Source file "' + filepath + '" not found.');
@@ -73,10 +72,15 @@ module.exports = function(grunt) {
       // console.log(grunt.file.read(filepath))
       // console.log(cb.toString())
 
-      fs.readFile(filepath, function(err, data) {
-        upyClient.writeFile(dest, data, true, function(err, data) {
-          grunt.log.writeln('Pushed ' + dest, data);
-        })
+      upyClient.getFileInfo(dest, function(err, data) {
+        // Check if file exists
+        if(err !== null && err.statusCode === 404) {
+          fs.readFile(filepath, function(err, data) {
+            upyClient.writeFile(dest, data, true, function(err, data) {
+              grunt.log.writeln('Pushed ' + dest, data);
+            })
+          })
+        }
       })
 
     })
