@@ -17,35 +17,15 @@ module.exports = function(grunt) {
   var upyun = require("./upyun-lib").UPYun;
 
   grunt.registerMultiTask('upyun', 'Your task description goes here.', function() {
-
-  	var done = this.async();
+    var done = this.async();
   	var async = grunt.util.async;
-    var options = this.options();
 
     var path = require('path');
-    var all = []
+    var all = [];
 
-    var auth;
-    var config;
-    // 密码存到另外的文件中，注意要 ignore 掉
-    var authConfig = '.ftppass';
-    if (grunt.file.exists('./' + authConfig)) {
-      config = grunt.file.read('./' + authConfig);
-      if (config.length) {
-        auth = JSON.parse(config);
-      }
-    }
+    var config = this.options();
+    var upyClient = new upyun(config.bucket, config.username, config.password);
 
-    if(!auth) {
-      grunt.log.warn('auth file "' + authConfig + '" not found.');
-      return
-    }
-    var upyClient = new upyun(auth.bucket, auth.username, auth.password);
-
-    // console.log('auth: ', auth.bucket, auth.username, auth.password)
-    // return;
-
-    // console.log(this.files)
 
     // Iterate over all specified file groups.
   	this.files.forEach(function(f) {
@@ -61,20 +41,16 @@ module.exports = function(grunt) {
   			all.push([f.orig.expand ? f.dest : path.join(f.dest, filepath), filepath]);
   		})
   	});
-    // console.log(all)
 
     async.forEach(all, function(file, cb) {
 
       var dest = file[0]
-        , filepath = file[1]
-        ;
+        , filepath = file[1];
 
-      // console.log(grunt.file.read(filepath))
-      // console.log(cb.toString())
 
       upyClient.getFileInfo(dest, function(err, data) {
         // Check if file exists
-        if(err !== null && err.statusCode === 404) {
+        if(config.force || (err !== null && err.statusCode === 404)) {
           fs.readFile(filepath, function(err, data) {
             upyClient.writeFile(dest, data, true, function(err, data) {
               grunt.log.writeln('Pushed ' + dest, data);

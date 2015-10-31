@@ -114,7 +114,7 @@ UPYun.prototype.getFolderUsage = function (path, callback){
  * @param file 文件路径（包含文件名）
  * @param data 文件内容
  * @param autoMkdir 是否自动创建父级目录
- * @param 回调函数
+ * @param callback 回调函数
  * @param opts 可选参数, opts.header可用于指定额外的http header
  */
 UPYun.prototype.writeFile = function (file, data, autoMkdir, callback, opts){
@@ -132,6 +132,7 @@ UPYun.prototype.writeFile = function (file, data, autoMkdir, callback, opts){
 * 读取文件
 * @param file 文件路径（包含文件名）
 * @param output_file 输出文件的路径（默认为 null，结果返回文件内容，如设置output_file，将返回 true or false）
+* @param callback
 * return 文件内容 或 null
 */
 UPYun.prototype.readFile = function (file, output_file, callback) {
